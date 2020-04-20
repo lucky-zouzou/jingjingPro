@@ -1,6 +1,6 @@
 <template>
   <div class="btn">
-        button
+        button o---
   </div>
 </template>
 
