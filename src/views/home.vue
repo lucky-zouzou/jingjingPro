@@ -1,6 +1,14 @@
 <template>
     <div>
-      <Button></Button>
+      <Button
+      @click="test"
+      disabled
+      >
+         按钮
+      </Button>
+      <div class="flexColStartRowStart">
+        hahaha
+      </div>
     </div>
 </template>
 
@@ -14,10 +22,15 @@
           return{
 
           }
-        }
+        },
+      methods:{
+          test(){
+            alert("点击按钮")
+          }
+      }
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 </style>

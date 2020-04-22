@@ -1,0 +1,713 @@
+/* 初始化 */
+* {
+  font-size: 14px;
+  font-style: normal;
+  text-decoration: none;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  //word-break: break-all;
+  //line-height: 1;
+  //color: #575962;
+}
+
+hr {
+  margin: 10px 0px;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+ol, ul {
+  list-style: none;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, img {
+  display: block;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+
+input[type="text"] {
+  height: 45px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  color: #333;
+  line-height: 43px;
+}
+
+input, textarea, div {
+  outline: none;
+  box-shadow: none; /*  防止在firfox中出现红框 */
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #999;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: #999;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #999;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+  color: #999;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  -webkit-text-fill-color: #999 !important;
+  transition: background-color 50000s ease-in-out 0s; //背景色透明  生效时长  过渡效果  启用时延迟的时间
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="text"]:disabled
+{
+  background-color:rgb(243, 243, 243);
+}
+
+input[type="date"]::-webkit-clear-button { /*控制清除按钮*/
+  visibility: hidden;
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 14px;
+  line-height: 34px;
+  font-family: Microsoft YaHei;
+}
+
+/*控制年月日这个区域的*/
+input[type="date"]::-webkit-datetime-edit-text {
+  color: #333;
+  padding: 0;
+}
+
+/*这是控制年月日之间的斜线或短横线的*/
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: #333;
+}
+
+/*控制年文字, 如2013四个字母占据的那片地方*/
+input[type="date"]::-webkit-datetime-edit-month-field {
+  color: #333;
+}
+
+/*控制月份*/
+input[type="date"]::-webkit-datetime-edit-day-field {
+  color: #333;
+}
+
+/*控制具体日子*/
+input[type="date"]::-webkit-inner-spin-button {
+  //visibility: hidden;
+}
+
+/*这是控制上下小箭头的*/
+
+@mixin flex {
+  display:box;
+  display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+  display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+  display: -moz-box; /* Firefox 17- */
+  display: -moz-flex; /* Firefox 18+ */
+  display: -ms-flexbox; /* IE 10 */
+  display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+}
+@mixin flex_direction_row {
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  -o-flex-direction: row;
+  flex-direction: row;
+}
+@mixin flex_direction_col {
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+}
+
+// https://www.cnblogs.com/beimingbingpo/p/9229761.html
+
+@mixin justify_content_start{
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  -o-justify-content: flex-start;
+  justify-content: flex-start;
+}
+@mixin justify_content_center{
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+}
+@mixin justify_content_end{
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  -ms-justify-content: flex-end;
+  -o-justify-content: flex-end;
+  justify-content: flex-end;
+}
+@mixin justify_content_around{
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  -ms-justify-content: space-around;
+  -o-justify-content: space-around;
+  justify-content: space-around;
+}
+@mixin justify_content_between{
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  justify-content: space-between;
+}
+@mixin align_items_start{
+  -webkit-align-items:flex-start;
+  -moz-align-items:flex-start;
+  -ms-align-items:flex-start;
+  -o-align-items:flex-start;
+  align-items:flex-start;
+}
+@mixin align_items_center{
+  -webkit-align-items:center;
+  -moz-align-items:center;
+  -ms-align-items:center;
+  -o-align-items:center;
+  align-items:center;
+}
+@mixin align_items_end{
+  -webkit-align-items:flex-end;
+  -moz-align-items:flex-end;
+  -ms-align-items:flex-end;
+  -o-align-items:flex-end;
+  align-items:flex-end;
+}
+@mixin align_items_stretch{
+  -webkit-align-items:stretch;
+  -moz-align-items:stretch;
+  -ms-align-items:stretch;
+  -o-align-items:stretch;
+  align-items:stretch;
+}
+
+/* flex布局样式 */
+.flexRowStartColStart {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_start;
+  @include align_items_start;
+}
+
+.flexRowStartColCenter {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_start;
+  @include align_items_center;
+}
+
+.flexRowStartColEnd {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_start;
+  @include align_items_end;
+}
+
+.flexRowStartColStretch {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_start;
+  @include align_items_stretch;
+}
+
+.flexRowCenterColStart {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_center;
+  @include align_items_start;
+}
+
+.flexRowCenterColCenter {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_center;
+  @include align_items_center;
+}
+
+.flexRowCenterColEnd {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_center;
+  @include align_items_end;
+}
+
+.flexRowCenterColStretch {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_center;
+  @include align_items_stretch;
+}
+
+.flexRowEndColStart {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_end;
+  @include align_items_start;
+}
+
+.flexRowEndColCenter {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_end;
+  @include align_items_center;
+}
+
+.flexRowEndColEnd {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_end;
+  @include align_items_end;
+}
+
+.flexRowEndColStretch {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_end;
+  @include align_items_stretch;
+}
+
+.flexRowBetweenColStart {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_between;
+  @include align_items_start;
+}
+
+.flexRowBetweenColCenter {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_between;
+  @include align_items_center;
+}
+
+.flexRowBetweenColEnd {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_between;
+  @include align_items_end;
+}
+
+.flexRowBetweenColStretch {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_between;
+  @include align_items_stretch;
+}
+
+.flexRowAroundColStart {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_around;
+  @include align_items_start;
+}
+
+.flexRowAroundColCenter {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_around;
+  @include align_items_center;
+}
+
+.flexRowAroundColEnd {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_around;
+  @include align_items_end;
+}
+
+.flexRowAroundColStretch {
+  @include flex;
+  @include flex_direction_row;
+  @include justify_content_around;
+  @include align_items_stretch;
+}
+
+.flexColStartRowStart {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_start;
+  @include align_items_start;
+}
+
+.flexColStartRowCenter {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_start;
+  @include align_items_center;
+}
+
+.flexColStartRowEnd {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_start;
+  @include align_items_end;
+}
+
+.flexColStartRowStretch {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_start;
+  @include align_items_stretch;
+}
+
+.flexColCenterRowStart {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_center;
+  @include align_items_start;
+}
+
+.flexColCenterRowCenter {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_center;
+  @include align_items_center;
+}
+
+.flexColCenterRowEnd {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_center;
+  @include align_items_end;
+}
+
+.flexColCenterRowStretch {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_center;
+  @include align_items_stretch;
+}
+
+.flexColEndRowStart {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_end;
+  @include align_items_start;
+}
+
+.flexColEndRowCenter {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_end;
+  @include align_items_center;
+}
+
+.flexColEndRowEnd {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_end;
+  @include align_items_end;
+}
+
+.flexColEndRowStretch {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_end;
+  @include align_items_stretch;
+}
+
+.flexColBetweenRowStart {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_between;
+  @include align_items_start;
+}
+
+.flexColBetweenRowCenter {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_between;
+  @include align_items_center;
+}
+
+.flexColBetweenRowEnd {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_between;
+  @include align_items_end;
+}
+
+.flexColBetweenRowStretch {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_between;
+  @include align_items_stretch;
+}
+
+.flexColAroundRowStart {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_around;
+  @include align_items_start;
+}
+
+.flexColAroundRowCenter {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_around;
+  @include align_items_center;
+}
+
+.flexColAroundRowEnd {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_around;
+  @include align_items_end;
+}
+
+.flexColAroundRowStretch {
+  @include flex;
+  @include flex_direction_col;
+  @include justify_content_around;
+  @include align_items_stretch;
+}
+
+.flexWrap {
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+}
+
+.flexItem110 {
+  flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+}
+
+.flexItem100 {
+  flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  -webkit-flex: 1 0 auto;
+}
+
+.flexItem010 {
+  flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  -webkit-flex: 0 1 auto;
+}
+
+.flexItem000 {
+  flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  -webkit-flex: 0 0 auto;
+}
+
+.flexItemStart {
+  align-self: flex-start;
+}
+
+.flexItemCenter {
+  align-self: center;
+}
+
+.flexItemEnd {
+  align-self: flex-end;
+}
+
+.flexItemStretch {
+  align-self: stretch;
+}
+
+@mixin textLineLimit($line,$type:'') {
+  @if $line > 1 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    overflow: hidden;
+    word-break: break-all;
+  } @else if $type == 'clamp' {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    overflow: hidden;
+    word-break: break-all;
+  } @else {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* 动画过渡 */
+@mixin transition($target,$duration:0.3s) {
+  -webkit-transition: $target $duration;
+  -moz-transition: $target $duration;
+  -ms-transition: $target $duration;
+  -o-transition: $target $duration;
+  transition: $target $duration;
+}
+
+/* 国旗 */
+.icon_flag {
+  height: 11px;
+  width: 16px;
+  background-repeat: no-repeat;
+  background-size: 224px 199px;
+  background-image: url("https://rplus-global-bj.oss-cn-beijing.aliyuncs.com/picture/flags.png");
+  &.flag_china {
+    background-position: -64px -78px;
+  }
+  &.flag_english {
+    background-position: -160px -188px;
+  }
+}
+
+.shadowBox {
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 15px 1px rgba(69, 65, 78, 0.2);
+  -moz-box-shadow: 0px 0px 15px 1px rgba(69, 65, 78, 0.2);
+  box-shadow: 0px 0px 15px 1px rgba(69, 65, 78, 0.2);
+}
+
+/* 滚动条  -webkit- */
+/* 滚动条整体部分，可以设置宽度啥的 */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* 滚动条两端的按钮 */
+*::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* 外层轨道 */
+*::-webkit-scrollbar-track {
+  background-color: blue;
+}
+
+/* 内层轨道，滚动条中间部分（除去） */
+*::-webkit-scrollbar-track-piece {
+  background-color: #f6f6f6;
+}
+
+/* 拖动条，滑块 */
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(#5867dd, 0.5);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #5867dd;
+}
+
+/* 边角 */
+*::-webkit-scrollbar-corner {
+  display: none;
+}
+
+/* 定义右下角拖动块的样式 */
+*::-webkit-resizer {
+  display: none;
+}
+
+/* 滚动条 IE */
+* {
+  scrollbar-arrow-color: #f6f6f6; /*三角箭头的颜色*/
+
+  scrollbar-face-color: #5867dd; /*立体滚动条的颜色（包括箭头部分的背景色）*/
+
+  scrollbar-3dlight-color: transparent; /*立体滚动条亮边的颜色*/
+
+  scrollbar-highlight-color: transparent; /*滚动条的高亮颜色（左阴影？）*/
+
+  scrollbar-shadow-color: #f6f6f6; /*立体滚动条阴影的颜色*/
+
+  scrollbar-darkshadow-color: transparent; /*立体滚动条外阴影的颜色*/
+
+  scrollbar-track-color: #f6f6f6; /*立体滚动条背景颜色*/
+
+  scrollbar-base-color: #5867dd; /*滚动条的基色*/
+}
+
+.textLineLimit1 {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.textLineClamp1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+.textLineLimit2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.textLineLimit3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.noSelect {
+
+  -webkit-touch-callout: none; /* iOS Safari */
+
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+
+  -khtml-user-select: none; /* Konqueror */
+
+  -moz-user-select: none; /* Firefox */
+
+  -ms-user-select: none; /* Internet Explorer/Edge */
+
+  user-select: none;
+  /* Non-prefixed version, currently
+
+ not supported by any browser */
+
+}
+
+@media screen and (max-width: 1200px) {
+  .hidden-md {
+    display: none;
+  }
+}
+
+
