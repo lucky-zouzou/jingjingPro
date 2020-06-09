@@ -65,6 +65,7 @@ exports.cssLoaders = function (options) {
           // 多个文件时用数组的形式传入，单个文件时可以直接使用 path.resolve(__dirname, '../src/init.scss'
           resources: [
             path.resolve(__dirname, '../src/assets/css/common.scss'),
+            path.resolve(__dirname, '../src/assets/css/them.scss'),
           ]
         }
       }

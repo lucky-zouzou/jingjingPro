@@ -1,55 +1,111 @@
 <template>
-  <button class="btn" @click="ClickHandler()" :disabled="disabled">
+  <button class="jing--button" :class="classes" @click="ClickHandler()" :disabled="disabled">
+<!--    <Icon></Icon>-->
     <slot></slot>
   </button>
 </template>
 
 <script>
-export default {
-  name: 'Button',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  },
-  props:{
-    disabled:{
-      type: Boolean,
-      default: false
+  import Icon from './Icon'
+  export default {
+    name: 'Button',
+    components:{
+      Icon
     },
-    type:{
-      type: String,
-      default: "primary"
+    data() {
+      return {
+        msg: 'Welcome to Your Vue.js App'
+      }
     },
-    size:{
-      type: String,
-      default: "medium"
-    },
+    props: {
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
+      loading:{
+        type: Boolean,
+        default: false,
+      },
+      type: {
+        type: String,
+        default: "primary",
+        validator(val) {
+          if (["default", "primary", "danger"].indexOf(val) != -1) {
+            return true
+          } else {
+            return false
+          }
+        }
+      },
+      size: {
+        type: String,
+        default: "medium"
+      },
 
-  },
-  created(){
-    console.log(this.disabled)
-  },
-  methods:{
-    ClickHandler(){
-      this.$emit('click')
+    },
+    computed: {
+      classes: function () {
+        return ["jing--button-" + this.type, "jing--button-" + this.size,]
+      }
+    },
+    created() {
+      // if(this.type){
+      //
+      // }
+    },
+    methods: {
+      ClickHandler() {
+        this.$emit('click')
+      }
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.btn{
-  color: #42b983;
-  .m{
-    color: hotpink;
-  }
-  .primary:disabled{
-    background-color: rgb(192, 215, 250);
-    color: #3a8ee6;
+  $name: jing--button;
+  .#{$name} {
+    width: 100px;
+    height: 40px;
+    outline: none;
     border: none;
-    cursor: not-allowed;
+    border-radius: 4px;
+    /*动画设置*/
+    transition: border 0.8s;
+    -webkit-transition: border 0.8s;
+    transition: background-color 0.1s;
+    -webkit-transition: background-color 0.1s;
+    font-size: 16px;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.9;
+    }
+
+    @extend .disabled;
   }
-}
+
+  .disabled {
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  .#{$name}-primary {
+    background: $themColor;
+    color: white;
+  }
+
+  .#{$name}-danger {
+    background: orangered;
+    color: white;
+  }
+
+  @each $size, $width, $height in (small, 80px, 35px),(mini, 60px, 30px) {
+    .#{$name}-#{$size} {
+      width: $width;
+      height: $height;
+    }
+  }
 </style>
