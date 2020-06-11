@@ -98,7 +98,7 @@
   }
 
   .#{$name}-danger {
-    background: orangered;
+    background: $dangerColor;
     color: white;
   }
 
