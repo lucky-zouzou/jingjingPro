@@ -12,15 +12,15 @@ function broadcast(componentName, eventName, params) {
 export default {
   methods: {
     dispatch(componentName, eventName, params) {
-      console.log(componentName, eventName, params)
+      // console.log(componentName, eventName, params)
       var parent = this.$parent || this.$root;
-      var name = parent.$options.componentName;
-
+      var name = parent.$options._componentTag;
+      // console.log(name,componentName)
       while (parent && (!name || name !== componentName)) {
         parent = parent.$parent;
 
         if (parent) {
-          name = parent.$options.componentName;
+          name = parent.$options._componentTag;
         }
       }
       if (parent) {

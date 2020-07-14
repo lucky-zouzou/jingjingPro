@@ -35,6 +35,10 @@ html, body {
   height: 100%;
 }
 
+@media screen and (max-width: 1000px){
+ body{background-color: pink;}
+}
+
 input[type="text"] {
   height: 45px;
   border: 1px solid #ddd;

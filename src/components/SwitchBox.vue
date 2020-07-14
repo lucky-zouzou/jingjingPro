@@ -33,6 +33,7 @@
       }
     },
     created() {
+      this.isOn=this.value
       this.switchBoxClasses=[]
       if(this.size=='small'){
         this.switchBoxClasses.push('jing-switch-small')

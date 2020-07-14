@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Button from '@/components/Button'
+import canvas from '@/views/canvas'
 import home from '@/views/home'
 
 Vue.use(Router)
@@ -13,9 +13,9 @@ export default new Router({
       component: home
     },
     {
-      path: '/button',
-      name: 'Button',
-      component: Button
+      path: '/canvas',
+      name: 'canvas',
+      component: canvas
     },
   ]
 })
