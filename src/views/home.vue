@@ -52,13 +52,22 @@
 
     <div class="line"></div>
     <checkbox-group v-model="checkList">
-      <check-box label="aaa">A</check-box>
-      <check-box label="bbb">B</check-box>
+      <check-box label="aaa" disabled>A</check-box>
+      <check-box label="bbb" checked>B</check-box>
+      <check-box label="ccc">C</check-box>
     </checkbox-group>
 
-    <vue-qr :logoSrc="src2" :text="qrText" :size="200" ></vue-qr>
+<!--    <vue-qr :logoSrc="src2" :text="qrText" :size="200" ></vue-qr>-->
 <!--    <vue-qr text="Hello world1111111111" :callback="test1" qid="testid" ></vue-qr>-->
+    <div class="line"></div>
+    <div @click="openDialog">打开弹窗</div>
+    <jing-dialog
+      :visible="dialogShow"
+      title="提示1"
+      width="30%"
+    >
 
+    </jing-dialog>
 
   </div>
 </template>
@@ -71,12 +80,13 @@
   import jingRadio from "../components/jingRadio";
   import checkBox from "../components/checkBox";
   import radioGroup from "../components/radioGroup";
+  import jingDialog from "../components/jingDialog";
   import checkboxGroup from "../components/checkboxGroup";
   import VueQr from 'vue-qr'
 
   export default {
     name: "home",
-    components: {Button, SwitchBox, sync, jingLink, jingRadio, checkBox, radioGroup,checkboxGroup,VueQr},
+    components: {Button, SwitchBox, sync, jingLink, jingRadio, checkBox, radioGroup,checkboxGroup,VueQr,jingDialog},
     data() {
       return {
         switchValue: true,
@@ -88,7 +98,8 @@
         checked3: false,
         checkList:['aaa'],
         src2:"http://image.huahuibk.com/uploads/20190228/22/1551362450-DJqKpiaRAz.jpg",
-        qrText:"https://mp.weixin.qq.com/cgi-bin/wx"
+        qrText:"https://mp.weixin.qq.com/cgi-bin/wx",
+        dialogShow:false,
       }
     },
     methods: {
@@ -111,6 +122,9 @@
       },
       changeSync() {
         this.syncValue = !this.syncValue
+      },
+      openDialog(){
+        this.dialogShow=true
       }
     },
     watch: {}
@@ -128,7 +142,7 @@
 }
   .line {
     border-bottom: 1px dashed $opacityColor;
-    margin: 35px 0 15px;
+    margin: 20px 0 15px;
   }
 
   .text {
@@ -154,5 +168,6 @@
       padding-top: 10px;
     }
   }
+
 
 </style>

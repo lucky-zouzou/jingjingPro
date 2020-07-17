@@ -16,8 +16,10 @@
       value:{}
     },
     created() {
-      // console.log(this.value)
-    }
+      // this.$on('change', value => {
+      //   this.$emit('change', value);
+      // });
+    },
   }
 </script>
 
