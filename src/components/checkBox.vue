@@ -80,7 +80,7 @@
         if(!this.isDisabled){
           this.$emit('input',!this.value)
           this.$nextTick(() => {
-            console.log(this.model)
+            // console.log(this.model)
 
             if (this.isGroup) {
               this.dispatch('checkboxGroup', 'change', [this._checkboxGroup.value]);

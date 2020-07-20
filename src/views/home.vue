@@ -60,13 +60,19 @@
 <!--    <vue-qr :logoSrc="src2" :text="qrText" :size="200" ></vue-qr>-->
 <!--    <vue-qr text="Hello world1111111111" :callback="test1" qid="testid" ></vue-qr>-->
     <div class="line"></div>
-    <div @click="openDialog">打开弹窗</div>
+    <Button @click="openDialog" size="small">打开弹窗</Button>
     <jing-dialog
       :visible="dialogShow"
       title="提示1"
-      width="30%"
+      width="35%"
+      top="25vh"
+      @close="dialogShow=false"
     >
-
+      <div>一段信息</div>
+      <span slot="footer1" class="dialog-footer">
+        <Button  type="info" size="small" @click="dialogShow=false">取消</Button>
+        <Button  size="small" @click="dialogShow=false">确认</Button>
+      </span>
     </jing-dialog>
 
   </div>

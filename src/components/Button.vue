@@ -30,7 +30,7 @@
         type: String,
         default: "primary",
         validator(val) {
-          if (["default", "primary", "danger"].indexOf(val) != -1) {
+          if (["default", "primary", "danger","info"].indexOf(val) != -1) {
             return true
           } else {
             return false
@@ -70,6 +70,7 @@
     outline: none;
     border: none;
     border-radius: 4px;
+    margin-right: 10px;
     /*动画设置*/
     transition: border 0.8s;
     -webkit-transition: border 0.8s;
@@ -101,11 +102,17 @@
     background: $dangerColor;
     color: white;
   }
+  .#{$name}-info {
+    background: #f4f4f4;
+    border: 1px solid #999999;
+    color: #333333;
+  }
 
-  @each $size, $width, $height in (small, 80px, 35px),(mini, 60px, 30px) {
+  @each $size, $width, $height,$fontSize in (small, 80px, 35px, 14px),(mini, 60px, 30px, 12px) {
     .#{$name}-#{$size} {
       width: $width;
       height: $height;
+      font-size: $fontSize;
     }
   }
 </style>
