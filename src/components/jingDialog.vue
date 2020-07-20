@@ -2,7 +2,7 @@
   <transition
     name="dialog-fade"
   >
-    <div v-if="visible" id="jing-dialog">
+    <div v-if="visible" id="jing-dialog" @click.self="clickOutArea">
       <div class="dialogBox" :style="style">
         <div class="dialogTitle flexRowBetweenColCenter">
           <span>{{title}}</span>
@@ -31,7 +31,8 @@
       top:{
         type:String,
         default:"15vh"
-      }
+      },
+      canCloseOut:Boolean
     },
     computed:{
       style(){
@@ -49,6 +50,11 @@
     methods:{
       closeDialog(){
         this.$emit('close',false)
+      },
+      clickOutArea(){
+        if(this.canCloseOut){
+          this.closeDialog()
+        }
       }
     },
     mounted() {

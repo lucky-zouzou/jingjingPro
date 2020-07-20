@@ -67,6 +67,7 @@
       width="35%"
       top="25vh"
       @close="dialogShow=false"
+      canCloseOut
     >
       <div>一段信息</div>
       <span slot="footer1" class="dialog-footer">
