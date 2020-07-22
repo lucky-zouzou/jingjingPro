@@ -50,12 +50,12 @@
     <check-box v-model="checked2" disabled>巴基斯坦</check-box>
     <check-box v-model="checked3">印度尼西亚</check-box>
 
-    <div class="line"></div>
-    <checkbox-group v-model="checkList">
-      <check-box label="aaa" disabled>A</check-box>
-      <check-box label="bbb" checked>B</check-box>
-      <check-box label="ccc">C</check-box>
-    </checkbox-group>
+<!--    <div class="line"></div>-->
+<!--    <checkbox-group v-model="checkList">-->
+<!--      <check-box label="aaa" disabled>A</check-box>-->
+<!--      <check-box label="bbb" checked>B</check-box>-->
+<!--      <check-box label="ccc">C</check-box>-->
+<!--    </checkbox-group>-->
 
 <!--    <vue-qr :logoSrc="src2" :text="qrText" :size="200" ></vue-qr>-->
 <!--    <vue-qr text="Hello world1111111111" :callback="test1" qid="testid" ></vue-qr>-->
@@ -75,6 +75,16 @@
         <Button  size="small" @click="dialogShow=false">确认</Button>
       </span>
     </jing-dialog>
+    <div class="line"></div>
+
+    <jing-table
+      :data="tableData" checkBox
+      :titleArr="titleArr"
+      align="center"
+      @selection-change="handleSelectionChange"
+      stripe
+    >
+    </jing-table>
 
   </div>
 </template>
@@ -88,12 +98,13 @@
   import checkBox from "../components/checkBox";
   import radioGroup from "../components/radioGroup";
   import jingDialog from "../components/jingDialog";
+  import jingTable from "../components/jingTable";
   import checkboxGroup from "../components/checkboxGroup";
   import VueQr from 'vue-qr'
 
   export default {
     name: "home",
-    components: {Button, SwitchBox, sync, jingLink, jingRadio, checkBox, radioGroup,checkboxGroup,VueQr,jingDialog},
+    components: {Button, SwitchBox, sync, jingLink, jingRadio, checkBox, radioGroup,checkboxGroup,VueQr,jingDialog,jingTable},
     data() {
       return {
         switchValue: true,
@@ -107,6 +118,19 @@
         src2:"http://image.huahuibk.com/uploads/20190228/22/1551362450-DJqKpiaRAz.jpg",
         qrText:"https://mp.weixin.qq.com/cgi-bin/wx",
         dialogShow:false,
+        tableData:[
+          {id:1,name:"qingqing",sex:"女",like:"吃饭",address:"北京市海淀区"},
+          {id:2,name:"kong",sex:"男",like:"睡觉",address:"北京市海淀区"},
+          {id:3,name:"mimi",sex:"女",like:"打豆豆",address:"成都市高新南区"},
+          {id:4,name:"sanmy",sex:"女",like:"跳舞",address:"北京市海淀区"},
+          {id:5,name:"静静",sex:"女",like:"吃火锅",address:"北京市中关村"},
+        ],
+        titleArr:[
+          {text:"姓名",key:"name",width:"200px"},
+          {text:"性别",key:"sex",width:"100px"},
+          {text:"爱好",key:"like",width:"240px"},
+          {text:"工作地址",key:"address",width:"240px"},
+        ],
       }
     },
     methods: {
@@ -122,7 +146,17 @@
         // )
       },
       test() {
-
+        let color=["red","yellow","blue","pink","dark","red"]
+        let result=color.reduce((pre,cur,index)=>{
+          // console.log(pre,cur,index)
+          if(cur in pre){
+            pre[cur]++
+          }else {
+            pre[cur]=1
+          }
+          return pre
+        },{})
+        console.log(color,result)
       },
       switchChange(v) {
         // console.log(v)
@@ -132,6 +166,9 @@
       },
       openDialog(){
         this.dialogShow=true
+      },
+      handleSelectionChange(val){
+        // console.log(val)
       }
     },
     watch: {}

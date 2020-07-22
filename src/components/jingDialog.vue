@@ -75,7 +75,7 @@
 #jing-dialog{
   width:100%;
   height: 100%;
-  background-color: rgba(244,201,212,0.4);
+  background-color: rgba(244,201,212,0.2);
   position: fixed;
   top: 0;
   right: 0;
