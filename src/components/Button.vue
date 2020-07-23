@@ -65,8 +65,9 @@
 <style scoped lang="scss">
   $name: jing--button;
   .#{$name} {
-    width: 100px;
-    height: 40px;
+    /*width: 100px;*/
+    padding: 8px 20px;
+    /*height: 40px;*/
     outline: none;
     border: none;
     border-radius: 4px;
@@ -105,13 +106,12 @@
   .#{$name}-info {
     background: #f4f4f4;
     border: 1px solid #999999;
-    color: #333333;
+    color: $infoColor;
   }
 
-  @each $size, $width, $height,$fontSize in (small, 80px, 35px, 14px),(mini, 60px, 30px, 12px) {
+  @each $size, $paddingLR, $paddingTB,$fontSize in (small, 16px, 6px, 14px),(mini, 12px, 4px, 12px) {
     .#{$name}-#{$size} {
-      width: $width;
-      height: $height;
+      padding: $paddingTB $paddingLR;
       font-size: $fontSize;
     }
   }

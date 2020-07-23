@@ -3,8 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import myMessage from './components/message/main.js'
 
-
+Vue.prototype.$message = myMessage
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

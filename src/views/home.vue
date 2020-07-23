@@ -60,7 +60,7 @@
 <!--    <vue-qr :logoSrc="src2" :text="qrText" :size="200" ></vue-qr>-->
 <!--    <vue-qr text="Hello world1111111111" :callback="test1" qid="testid" ></vue-qr>-->
     <div class="line"></div>
-    <Button @click="openDialog" size="small">打开弹窗</Button>
+    <Button @click="openDialog" size="small">打开dialog</Button>
     <jing-dialog
       :visible="dialogShow"
       title="提示1"
@@ -76,7 +76,7 @@
       </span>
     </jing-dialog>
     <div class="line"></div>
-
+    <span>table</span>
     <jing-table
       :data="tableData" checkBox
       :titleArr="titleArr"
@@ -85,7 +85,12 @@
       stripe
     >
     </jing-table>
+    <div class="line"></div>
 
+    <div>message</div>
+    <Button @click="open('success')">成功</Button>
+    <Button @click="open('error')">错误</Button>
+    <Button @click="open('warning')">警告</Button>
   </div>
 </template>
 
@@ -169,6 +174,14 @@
       },
       handleSelectionChange(val){
         // console.log(val)
+      },
+      open(type){
+        this.$message({
+          type:type,
+          text:type+"消息",
+          duration:"2000"
+        })
+        // this.$message.error({text:type+"消息",})
       }
     },
     watch: {}
