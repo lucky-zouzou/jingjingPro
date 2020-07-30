@@ -4,8 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import myMessage from './components/message/main.js'
+import Loading from './components/loading/index.js'
+
 
 Vue.prototype.$message = myMessage
+Vue.use(Loading.directive)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

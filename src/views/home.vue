@@ -88,9 +88,14 @@
     <div class="line"></div>
 
     <div>message</div>
-    <Button @click="open('success')">成功</Button>
-    <Button @click="open('error')">错误</Button>
-    <Button @click="open('warning')">警告</Button>
+    <Button @click="open('success')" type="info">成功</Button>
+    <Button @click="open('error')" type="info">错误</Button>
+    <Button @click="open('warning')" type="info">警告</Button>
+    <div class="line"></div>
+
+    <div  :loading-text="loadingText" v-loading="isLoading" class="loadingBox">something</div>
+    <Button @click="loadingSwitch" type="info">点我loading</Button>
+    <Button @click="loadingSwitch2" type="info"  v-loading.isFullscreen="screenLoading" :loading-text="loadingText">点我全局loading</Button>
   </div>
 </template>
 
@@ -136,7 +141,13 @@
           {text:"爱好",key:"like",width:"240px"},
           {text:"工作地址",key:"address",width:"240px"},
         ],
+        loadingText:"loading...",
+        isLoading:false,
+        screenLoading:false
       }
+    },
+    created(){
+
     },
     methods: {
       test1(dataUrl,id){
@@ -182,6 +193,20 @@
           duration:"2000"
         })
         // this.$message.error({text:type+"消息",})
+      },
+      loadingSwitch(){
+        this.isLoading=!this.isLoading
+        if(this.isLoading){
+          this.loadingText='loading...'
+        }else {
+          this.loadingText=''
+        }
+      },
+      loadingSwitch2(){
+        this.screenLoading=!this.screenLoading
+        setTimeout(()=>{
+          this.screenLoading=false
+        },1500)
       }
     },
     watch: {}
@@ -224,6 +249,12 @@
       cursor: $cursor;
       padding-top: 10px;
     }
+  }
+  .loadingBox{
+    width: 400px;
+    height: 200px;
+    border:1px solid #999999;
+    margin-bottom: 10px;
   }
 
 

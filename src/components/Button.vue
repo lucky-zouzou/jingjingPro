@@ -66,7 +66,7 @@
   $name: jing--button;
   .#{$name} {
     /*width: 100px;*/
-    padding: 8px 20px;
+    padding: 7px 20px;
     /*height: 40px;*/
     outline: none;
     border: none;
@@ -104,10 +104,11 @@
     color: white;
   }
   .#{$name}-info {
-    background: #f4f4f4;
-    border: 1px solid #999999;
-    color: $infoColor;
+    background: #ffffff;
+    border: 1px solid $themColor;
+    color: $themColor;
   }
+
 
   @each $size, $paddingLR, $paddingTB,$fontSize in (small, 16px, 6px, 14px),(mini, 12px, 4px, 12px) {
     .#{$name}-#{$size} {
