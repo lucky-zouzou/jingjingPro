@@ -63,5 +63,25 @@
     height: 100px;
     background: $primaryColor;
   }
+  .box21{
+    width: 120px;
+    background:$successColor;
+  }
+  .box22{
+    width: 200px;
+    background: $warningColor;
+  }
+  .box23{
+    width: 130px;
+    background:$lightColor;
+  }
+  .box24{
+    width: 120px;
+    background: $infoColor;
+  }
+  .box25{
+    width: 120px;
+    background: $primaryColor;
+  }
 }
 </style>
